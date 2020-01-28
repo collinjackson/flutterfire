@@ -6,7 +6,7 @@ part of cloud_firestore_platform_interface;
 /// The document at the referenced location may or may not exist.
 /// A [DocumentReference] can also be used to create a [CollectionReference]
 /// to a subcollection.
-abstract class DocumentReference {
+abstract class DocumentReferencePlatform {
   /// Create instance of [DocumentReference]
   DocumentReference(this.firestore, this._pathComponents);
 

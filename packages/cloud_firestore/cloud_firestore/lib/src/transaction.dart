@@ -11,7 +11,9 @@ typedef Future<dynamic> TransactionHandler(Transaction transaction);
 class Transaction {
   final Firestore _firestore;
 
-  Transaction._(this._delegate, this._firestore);
+  Transaction._(this._delegate, this._firestore) {
+    platform.TransactionPlatform.verifyToken(_delegate);
+  }
 
   platform.TransactionPlatform _delegate;
 

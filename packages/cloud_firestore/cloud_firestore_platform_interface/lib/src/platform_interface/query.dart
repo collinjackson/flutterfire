@@ -5,7 +5,7 @@
 part of cloud_firestore_platform_interface;
 
 /// Represents a query over the data at a particular location.
-abstract class Query {
+abstract class Query extends PlatformInterface {
   /// Create a [Query] instance
   Query(
       {@required this.firestore,
@@ -20,7 +20,8 @@ abstract class Query {
               'orderBy': List<List<dynamic>>.unmodifiable(<List<dynamic>>[]),
             }),
         assert(firestore != null),
-        assert(pathComponents != null);
+        assert(pathComponents != null),
+        super(token: token);
 
   /// The Firestore instance associated with this query
   final FirestorePlatform firestore;
@@ -36,6 +37,12 @@ abstract class Query {
 
   /// Represents the path referenced by `this` [Query]
   String get path => pathComponents.join('/');
+
+  static final Object _token = Object();
+
+  static verifyToken(Query instance) {
+    PlatformInterface.verifyToken(instance, _token);
+  }
 
   Query _copyWithParameters(Map<String, dynamic> parameters) {
     throw UnimplementedError("copyWithParameters() is not implemented");
