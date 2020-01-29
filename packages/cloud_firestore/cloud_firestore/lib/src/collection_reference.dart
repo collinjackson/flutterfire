@@ -8,10 +8,12 @@ part of cloud_firestore;
 /// document references, and querying for documents (using the methods
 /// inherited from [Query]).
 class CollectionReference extends Query {
-  final platform.CollectionReference _delegate;
-
   CollectionReference._(this._delegate, Firestore firestore)
-      : super._(_delegate, firestore);
+      : super._(_delegate, firestore) {
+    platform.CollectionReferencePlatform.verifyExtends(_delegate);
+  }
+
+  final platform.CollectionReferencePlatform _delegate;
 
   /// ID of the referenced collection.
   String get id => _pathComponents.isEmpty ? null : _pathComponents.last;

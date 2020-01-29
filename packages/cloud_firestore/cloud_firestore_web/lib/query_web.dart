@@ -1,7 +1,7 @@
 part of cloud_firestore_web;
 
 /// Web implementation for firestore [Query]
-class QueryWeb implements Query {
+class QueryWeb implements QueryPlatform {
   final web.Query _webQuery;
   final FirestorePlatform _firestore;
   final bool _isCollectionGroup;

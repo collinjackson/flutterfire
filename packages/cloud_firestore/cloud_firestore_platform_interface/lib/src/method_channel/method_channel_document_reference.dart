@@ -18,7 +18,7 @@ class MethodChannelDocumentReference extends DocumentReference {
     return MethodChannelFirestore.channel.invokeMethod<void>(
       'DocumentReference#setData',
       <String, dynamic>{
-        'app': firestore.appName(),
+        'app': firestore.app.name,
         'path': path,
         'data': FieldValue.serverDelegates(data),
         'options': <String, bool>{'merge': merge},
@@ -31,7 +31,7 @@ class MethodChannelDocumentReference extends DocumentReference {
     return MethodChannelFirestore.channel.invokeMethod<void>(
       'DocumentReference#updateData',
       <String, dynamic>{
-        'app': firestore.appName(),
+        'app': firestore.app.name,
         'path': path,
         'data': FieldValue.serverDelegates(data),
       },
@@ -44,7 +44,7 @@ class MethodChannelDocumentReference extends DocumentReference {
         await MethodChannelFirestore.channel.invokeMapMethod<String, dynamic>(
       'DocumentReference#get',
       <String, dynamic>{
-        'app': firestore.appName(),
+        'app': firestore.app.name,
         'path': path,
         'source': _getSourceString(source),
       },
@@ -62,7 +62,7 @@ class MethodChannelDocumentReference extends DocumentReference {
   Future<void> delete() {
     return MethodChannelFirestore.channel.invokeMethod<void>(
       'DocumentReference#delete',
-      <String, dynamic>{'app': firestore.appName(), 'path': path},
+      <String, dynamic>{'app': firestore.app.name, 'path': path},
     );
   }
 
@@ -79,7 +79,7 @@ class MethodChannelDocumentReference extends DocumentReference {
         _handle = MethodChannelFirestore.channel.invokeMethod<int>(
           'DocumentReference#addSnapshotListener',
           <String, dynamic>{
-            'app': firestore.appName(),
+            'app': firestore.app.name,
             'path': path,
             'includeMetadataChanges': includeMetadataChanges,
           },

@@ -23,10 +23,10 @@ enum DocumentChangeType {
 /// It contains the document affected and the type of change that occurred
 /// (added, modified, or removed).
 class DocumentChange {
-  final platform.DocumentChange _delegate;
-  final Firestore _firestore;
-
   DocumentChange._(this._delegate, this._firestore);
+
+  final platform.DocumentChangePlatform _delegate;
+  final Firestore _firestore;
 
   /// The type of change that occurred (added, modified, or removed).
   DocumentChangeType get type => _PlatformUtils.fromPlatform(_delegate.type);

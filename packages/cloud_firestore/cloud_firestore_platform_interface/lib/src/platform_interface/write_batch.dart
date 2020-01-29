@@ -15,7 +15,9 @@ abstract class WriteBatchPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static verifyToken(WriteBatchPlatform instance) {
+  /// Throws an [AssertionError] if [instance] does not extend
+  /// [WriteBatchPlatform].
+  static verifyExtends(WriteBatchPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
   }
 

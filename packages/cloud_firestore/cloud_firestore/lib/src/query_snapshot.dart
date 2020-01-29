@@ -6,12 +6,12 @@ part of cloud_firestore;
 
 /// A QuerySnapshot contains zero or more DocumentSnapshot objects.
 class QuerySnapshot {
-  final platform.QuerySnapshot _delegate;
-  final Firestore _firestore;
-
   QuerySnapshot._(this._delegate, this._firestore) {
     platform.QuerySnapshotPlatform.verifyToken(_delegate);
   }
+
+  final platform.QuerySnapshot _delegate;
+  final Firestore _firestore;
 
   /// Gets a list of all the documents included in this snapshot
   List<DocumentSnapshot> get documents => _delegate.documents

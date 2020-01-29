@@ -11,12 +11,12 @@ part of cloud_firestore;
 /// A [DocumentReference] can also be used to create a [CollectionReference]
 /// to a subcollection.
 class DocumentReference {
+  DocumentReference._(this._delegate, this.firestore);
+
   platform.DocumentReferencePlatform _delegate;
 
   /// The Firestore instance associated with this document reference
   final Firestore firestore;
-
-  DocumentReference._(this._delegate, this.firestore);
 
   @override
   bool operator ==(dynamic o) =>

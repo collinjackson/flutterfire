@@ -17,7 +17,9 @@ abstract class TransactionPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static verifyToken(TransactionPlatform instance) {
+  /// Throws an [AssertionError] if [instance] does not extend
+  /// [TransactionPlatform].
+  static verifyExtends(TransactionPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
   }
 

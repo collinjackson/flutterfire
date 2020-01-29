@@ -6,13 +6,21 @@ part of cloud_firestore_platform_interface;
 /// The document at the referenced location may or may not exist.
 /// A [DocumentReference] can also be used to create a [CollectionReference]
 /// to a subcollection.
-abstract class DocumentReferencePlatform {
+abstract class DocumentReferencePlatform extends PlatformInterface {
   /// Create instance of [DocumentReference]
-  DocumentReference(this.firestore, this._pathComponents);
+  DocumentReferencePlatform(this.firestore, this._pathComponents);
 
   /// The Firestore instance associated with this document reference
   final FirestorePlatform firestore;
   final List<String> _pathComponents;
+
+  static final Object _token = Object();
+
+  /// Throws an [AssertionError] if [instance] does not extend
+  /// [DocumentReferencePlatform].
+  static verifyExtends(TransactionPlatform instance) {
+    PlatformInterface.verifyToken(instance, _token);
+  }
 
   @override
   bool operator ==(dynamic o) =>

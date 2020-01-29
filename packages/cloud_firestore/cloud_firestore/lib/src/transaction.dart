@@ -12,7 +12,7 @@ class Transaction {
   final Firestore _firestore;
 
   Transaction._(this._delegate, this._firestore) {
-    platform.TransactionPlatform.verifyToken(_delegate);
+    platform.TransactionPlatform.verifyExtends(_delegate);
   }
 
   platform.TransactionPlatform _delegate;

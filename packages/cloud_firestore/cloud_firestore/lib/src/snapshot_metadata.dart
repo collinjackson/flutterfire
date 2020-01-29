@@ -6,8 +6,11 @@ part of cloud_firestore;
 
 /// Metadata about a snapshot, describing the state of the snapshot.
 class SnapshotMetadata {
-  platform.SnapshotMetadata _delegate;
-  SnapshotMetadata._(this._delegate);
+  SnapshotMetadata._(this._delegate) {
+    platform.SnapshotMetadata.verifyExtends(_delegate);
+  }
+
+  platform.SnapshotMetadataPlatform _delegate;
 
   /// Whether the snapshot contains the result of local writes that have not yet
   /// been committed to the backend.

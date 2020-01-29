@@ -13,7 +13,7 @@ void main() {
     final transaction = TransactionWeb(mockWebTransaction, mockFirestore);
 
     setUp(() {
-      when(mockFirestore.appName()).thenReturn("test");
+      when(mockfirestore.app.name).thenReturn("test");
       when(mockDocumentReference.delegate).thenReturn(mockWebDocumentReference);
     });
 

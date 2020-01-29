@@ -6,7 +6,7 @@ part of cloud_firestore_platform_interface;
 
 /// An implementation of [TransactionPlatform] which uses [MethodChannel] to
 /// communication with native plugin
-class Transaction extends TransactionPlatform {
+class MethodChannelTransaction extends Transaction {
   /// [FirebaseApp] name used for this [Transaction]
   final String appName;
 
@@ -25,7 +25,7 @@ class Transaction extends TransactionPlatform {
   Future<DocumentSnapshot> _get(DocumentReference documentReference) async {
     final Map<String, dynamic> result = await MethodChannelFirestore.channel
         .invokeMapMethod<String, dynamic>('Transaction#get', <String, dynamic>{
-      'app': firestore.appName(),
+      'app': firestore.app.name,
       'transactionId': _transactionId,
       'path': documentReference.path,
     });
@@ -45,7 +45,7 @@ class Transaction extends TransactionPlatform {
   Future<void> _delete(DocumentReference documentReference) async {
     return MethodChannelFirestore.channel
         .invokeMethod<void>('Transaction#delete', <String, dynamic>{
-      'app': firestore.appName(),
+      'app': firestore.app.name,
       'transactionId': _transactionId,
       'path': documentReference.path,
     });
@@ -56,7 +56,7 @@ class Transaction extends TransactionPlatform {
       DocumentReference documentReference, Map<String, dynamic> data) async {
     return MethodChannelFirestore.channel
         .invokeMethod<void>('Transaction#update', <String, dynamic>{
-      'app': firestore.appName(),
+      'app': firestore.app.name,
       'transactionId': _transactionId,
       'path': documentReference.path,
       'data': FieldValue.serverDelegates(data),
@@ -68,7 +68,7 @@ class Transaction extends TransactionPlatform {
       DocumentReference documentReference, Map<String, dynamic> data) async {
     return MethodChannelFirestore.channel
         .invokeMethod<void>('Transaction#set', <String, dynamic>{
-      'app': firestore.appName(),
+      'app': firestore.app.name,
       'transactionId': _transactionId,
       'path': documentReference.path,
       'data': FieldValue.serverDelegates(data),
