@@ -81,9 +81,7 @@ class CodecUtility {
     } else if (value is web.Blob) {
       return Blob(value.toUint8Array());
     } else if (value is web.DocumentReference) {
-      return DocumentReferenceWeb(
-          (FirestorePlatform.instance as FirestoreWeb).webFirestore,
-          FirestorePlatform.instance,
+      return (FirestorePlatform.instance as FirestoreWeb).document(
           value.path.split("/"));
     } else if (value is Map<String, dynamic>) {
       return decodeMapData(value);
