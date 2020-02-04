@@ -7,20 +7,9 @@ part of cloud_firestore;
 /// Sentinel values that can be used when writing document fields with set() or
 /// update().
 class FieldValue extends platform.FieldValuePlatform {
-  platform.FieldValuePlatform _delegate;
-
-  FieldValue._(this._delegate) : super(_delegate.type, _delegate.value) {
-    platform.FieldValuePlatform.verifyExtends(_delegate);
+  FieldValue._(platform.FieldValuePlatform delegate) : super(delegate) {
+    platform.FieldValuePlatform.verifyExtends(delegate);
   }
-
-  @override
-  platform.FieldValuePlatform get instance => _delegate;
-
-  @visibleForTesting
-  platform.FieldValueType get type => _delegate.type;
-
-  @visibleForTesting
-  dynamic get value => _delegate.value;
 
   /// Returns a special value that tells the server to union the given elements
   /// with any array value that already exists on the server.

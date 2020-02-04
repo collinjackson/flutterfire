@@ -6,22 +6,8 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'package:cloud_firestore_platform_interface/cloud_firestore_platform_interface.dart';
 
-/// A class to define an interface that's required
-/// for building platform-specific implementation
-abstract class FieldValueInterface {
-  /// Implementation instance
-  FieldValueInterface get instance;
-
-  /// type of the FieldValue
-  FieldValueType get type;
-
-  /// value of the FieldValue
-  dynamic get value;
-}
-
 /// Platform Interface of a FieldValue; implementation for [FieldValueInterface]
-class FieldValuePlatform extends PlatformInterface
-    implements FieldValueInterface {
+abstract class FieldValuePlatform extends PlatformInterface {
   static final Object _token = Object();
 
   /// Throws an [AssertionError] if [instance] does not extend
@@ -35,14 +21,11 @@ class FieldValuePlatform extends PlatformInterface
   }
 
   /// Constructor
-  FieldValuePlatform(this.type, this.value) : super(token: _token);
+  FieldValuePlatform(this._delegate) : super(token: _token);
 
-  @override
-  FieldValuePlatform get instance => this;
+  final dynamic _delegate;
 
-  @override
-  final FieldValueType type;
-
-  @override
-  final dynamic value;
+  // Used by platform implementers to obtain a value suitable for being passed
+  // through to the underlying implementation.
+  static dynamic getDelegate(FieldValuePlatform fieldValue) => fieldValue._delegate;
 }

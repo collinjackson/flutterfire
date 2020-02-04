@@ -15,11 +15,5 @@ class FieldValueWeb extends FieldValuePlatform {
   FieldValueWeb(this.delegate, this.type, this.value) : super(type, value);
 
   @override
-  final FieldValueType type;
-
-  @override
-  final dynamic value;
-
-  @override
   FieldValuePlatform get instance => this;
 }
