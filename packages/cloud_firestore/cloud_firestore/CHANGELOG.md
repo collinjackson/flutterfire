@@ -1,3 +1,7 @@
+## 0.13.0+3
+
+* Updated README with solution to Android multidex issue.
+
 ## 0.13.0+2
 
 * Fixed `persistenceEnabled`, `sslEnabled`, and `timestampsInSnapshotsEnabled` on iOS.
