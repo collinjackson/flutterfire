@@ -1,3 +1,8 @@
+## 0.1.1
+
+* Support equality comparison of field values.
+* `FieldValueWeb` no longer extends `FieldValuePlatform`.
+
 ## 0.1.0+4
 
 * Make the pedantic dev_dependency explicit.
